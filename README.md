@@ -1,5 +1,5 @@
 # Monitor_C_Project
-##Features
+## Features
 
 Read user input or generate random sensor values
 
@@ -15,7 +15,7 @@ Variance calculation
 
 Handle arrays with precision, excluding unused elements (-1 as marker)
 
-###Implemented Functions
+## Implemented Functions
 
 ReadArrayValues – Reads input until full or a negative value is entered
 
