@@ -1,0 +1,168 @@
+CE4703 Computer Software 3 - Assignment 1
+Author: Karyna Enato (23329831)
+______________________________________________________________
+The task is to write a program that “monitors” data from an industrial production lines. Such a production line has a number of sensors and your application
+compares these sensor data against expected values.
+
+A report (in plain text format) that contains a specification
+for each working function and also a pseudocode representation for each working function. 
+For simple functions, a single iteration is sufficient - for any nontrivial function pseudo-code representation provide (at least) two iterations of refinement. 
+
+
+______________________________________________________________
+WF1: ReadArrayValues
+
+Specification: Reads user input values into an array until a negative number is entered or the array reaches its maximum capacity and remaining elements are marked as UNUSED.
+
+Pseudo-code:
+FOR each index i up to capacity:
+    Prompt user for input at array[i]
+    Read input value
+    IF input < 0:
+        BREAK
+    ELSE:
+        Store value in array[i]
+FOR remaining elements:
+    Set value to UNUSED
+	
+WF2: RandomValues
+Specification: Fills an array with random values within a specified range, up to used_elements. Remaining elements are marked as UNUSED.
+
+Pseudo-code:
+FOR each index i up to used_elements:
+    Generate random floating-point value between min and max
+    Store random value at array[i]
+FOR each index from used_elements to capacity:
+    Set array[i] to UNUSED
+	
+	
+WF3: CountUsedElements
+
+Specification: Counts and returns the number of used elements (non-UNUSED) in an array.
+
+Pseudo-code:
+Initialize count to 0
+FOR each element in array:
+    IF element is not UNUSED:
+        Increment count
+RETURN count
+
+
+WF4: MinimumValue
+
+Specification: Finds the minimum value among the used elements in an array.
+
+Pseudo-code:
+Set min to DBL_MAX
+FOR each index i up to capacity:
+    IF array[i] is not UNUSED:
+        IF array[i] < min:
+            Set min to array[i]
+RETURN min
+
+
+WF5: MaximumValue
+
+Specification: Finds the maximum value among the used elements in an array.
+
+Pseudo-code:
+Set max to -DBL_MAX
+FOR each element:
+    IF element is used:
+        Update max if element is greater
+RETURN max
+
+
+WF6: PrintUsedElements
+
+Specification: Prints the used elements of an array in a formatted list.
+
+Pseudo-code:
+Print "{"
+FOR each element:
+    IF element is used:
+        Print element
+Print "}"
+
+
+WF7: PrintAllElements
+
+Specification: Prints all elements of an array, marking unused ones as -1.
+
+Pseudo-code:
+Print "{"
+FOR each element:
+    Print element or UNUSED as -1
+Print "}"
+
+
+WF8: CompareNumberOfUsedElements
+
+Specification: Compares the number of used elements in two arrays.
+
+Pseudo-code:
+Count used elements in array1 and array2
+IF count1 < count2:
+    RETURN -1
+ELSE IF count1 > count2:
+    RETURN 1
+RETURN 0
+
+
+WF9: CompareArrays
+Specification: Compares values in two arrays within a given tolerance.
+
+Pseudo-code:
+Count used elements in array1 and array2
+IF counts differ:
+    RETURN -1
+Initialize outside_tolerance to 0
+FOR each index i up to capacity:
+    IF both array1[i] and array2[i] are used:
+        Check if array1[i] is within tolerance range of array2[i]
+        IF outside tolerance:
+            Increment outside_tolerance
+RETURN outside_tolerance
+
+Pseudo-code:
+Count used elements in array1 and array2
+IF counts differ:
+    RETURN -1
+Initialize outside_tolerance to 0
+FOR each index i up to capacity:
+    IF both array1[i] and array2[i] are used:
+        Set lower_bound to array2[i] * (1 - tolerance / 100)
+        Set upper_bound to array2[i] * (1 + tolerance / 100)
+        IF array1[i] is outside bounds:
+            Increment outside_tolerance
+RETURN outside_tolerance
+
+
+
+WF10: ComputeVariance
+
+Specification: Computes variance between two arrays.
+
+Pseudo-code:
+Count used elements in both arrays
+IF used counts differ:
+    RETURN -1
+Initialize sum of squared differences
+FOR each used element:
+    Add squared difference to sum
+Calculate variance as average squared difference
+RETURN variance
+
+Pseudo-code:
+Count used elements in array1 and array2
+IF used counts differ:
+    RETURN -1
+Initialize sum to 0 and used_elements to 0
+FOR each index i:
+    IF both elements are used:
+        Increment used_elements
+        Calculate squared difference and add to sum
+IF used_elements is 0:
+    RETURN -1
+Calculate variance as sum / used_elements
+RETURN variance
