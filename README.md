@@ -24,4 +24,4 @@ This C program simulates a sensor monitoring system for an industrial production
 
 - **The project includes Doxygen documentation.**
 
-- All files are packaged in a ZIP archive for submission.
+- All project files are organized and available in a ZIP archive.
